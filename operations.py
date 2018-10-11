@@ -15,7 +15,7 @@ from random import shuffle, random
 
 def gamefunc(player_amount):
     if 1 < player_amount < 7:
-        players = {'player' + str(i): 0 for i in range(1, player_amount + 1)} # игроки, им будет присвоен суммарный прииоритет их карт
+        players = {'player' + str(i): 0 for i in range(1, player_amount+1)} # игроки, им будет присвоен суммарный прииоритет их карт
         card_deck = ['6 diamonds', '6 clubs', '6 hearts', '6 spades',   # колода карт
                      '7 diamonds', '7 clubs', '7 hearts', '7 spades',
                      '8 diamonds', '8 clubs', '8 hearts', '8 spades',
@@ -38,8 +38,7 @@ def gamefunc(player_amount):
             for card in player_cards[player]:
                 for k, v in card_priority.items():
                     if k in card:
-                        players[
-                            player] += v + 9 if trump_suit in card else v  # если карта козырная - приоритет выше на 9
+                        players[player] += v + 9 if trump_suit in card else v  # если карта козырная - приоритет выше на 9
                         break
         strongest_sets = [sorted(players.items(), key=lambda x: x[1], reverse=True)[0]]  # "сильнейший" набор
         for player in sorted(players.items(), key=lambda x: x[1], reverse=True)[1:]:
